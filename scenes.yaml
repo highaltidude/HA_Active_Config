@@ -9,3 +9,19 @@
       friendly_name: TRADFRI driver
       supported_features: 33
       state: 'on'
+- id: '1608176752769'
+  name: Livingroom Relax
+  entities:
+    light.tradfri_bulb:
+      min_mireds: 250
+      max_mireds: 454
+      brightness: 59
+      color_temp: 454
+      friendly_name: TRADFRI bulb
+      supported_features: 35
+      state: 'on'
+    light.tradfri_driver:
+      brightness: 43
+      friendly_name: Stove
+      supported_features: 33
+      state: 'on'

@@ -3,8 +3,8 @@
   description: ''
   trigger:
   - platform: time
-    at: '22:31:00'
+    at: '22:48:00'
   condition: []
   action:
-  - scene: scene.new_scene
+  - scene: scene.livingroom_relax
   mode: single
