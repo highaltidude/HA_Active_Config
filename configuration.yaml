@@ -36,7 +36,7 @@ google:
   client_id: 787355086980-atrb58f8fueii481t5npts9uj5n8blan.apps.googleusercontent.com
   client_secret: !secret google_client_secret
   
-#test git change 3
+#test git change 4
 
 sensor:
   - platform: systemmonitor
