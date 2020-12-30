@@ -1,10 +1,9 @@
 - id: '1608089136149'
-  name: New Scene
+  name: Cooking
   entities:
-    light.tradfri_driver:
-      brightness: 254
-      friendly_name: TRADFRI driver
-      supported_features: 33
+    switch.unknown_type_ff00_id_ff0c_switch:
+      node_id: 4
+      friendly_name: ZwaveSwitch1
       state: 'on'
 - id: '1608176752769'
   name: Livingroom Relax
