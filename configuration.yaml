@@ -11,7 +11,7 @@ automation: !include automations.yaml
 script: !include scripts.yaml
 scene: !include scenes.yaml
 
-    # Example configuration.yaml entry
+# Sabnzbd
 sabnzbd:
   api_key: 3ff07e22c351cad43c9670b97cb97078
   host: 192.168.0.41
@@ -31,13 +31,12 @@ sabnzbd:
     - month_size
     - total_size
     
-    # Example configuration.yaml entry
+# Google Calendar
 google:
   client_id: 787355086980-atrb58f8fueii481t5npts9uj5n8blan.apps.googleusercontent.com
   client_secret: !secret google_client_secret
   
-#test git change 4
-
+# Pi System Monitor
 sensor:
   - platform: systemmonitor
     resources:
