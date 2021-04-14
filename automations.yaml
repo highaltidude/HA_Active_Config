@@ -8,3 +8,139 @@
   action:
   - scene: scene.livingroom_relax
   mode: single
+- id: '1613160140792'
+  alias: Humidity Too Low
+  description: ''
+  trigger:
+  - type: value
+    platform: device
+    device_id: 53d4f83bc5fdd0709f1e49474cb7d86a
+    entity_id: sensor.4_in_1_sensor_humidity
+    domain: sensor
+    below: 32
+    above: 0
+    for:
+      hours: 0
+      minutes: 0
+      seconds: 20
+      milliseconds: 0
+  condition: []
+  action:
+  - service: notify.mobile_app_drew_s_phone
+    data:
+      message: Humidity beyond threshold
+  mode: single
+- id: '1613160579606'
+  alias: Test Motion
+  description: ''
+  trigger:
+  - type: motion
+    platform: device
+    device_id: 53d4f83bc5fdd0709f1e49474cb7d86a
+    entity_id: binary_sensor.4_in_1_sensor_home_security_motion_detection
+    domain: binary_sensor
+    for:
+      hours: 0
+      minutes: 0
+      seconds: 1
+      milliseconds: 0
+  condition: []
+  action:
+  - service: notify.mobile_app_drew_s_phone
+    data:
+      message: motion triggered
+  mode: single
+- id: '1617217837385'
+  alias: Post Work
+  description: ''
+  trigger:
+  - platform: time
+    at: '17:00'
+  condition: []
+  action:
+  - scene: scene.new_scene
+  mode: single
+- id: '1617899309846'
+  alias: Late Night Motion in Caroline's Room
+  description: ''
+  trigger:
+  - type: motion
+    platform: device
+    device_id: 53d4f83bc5fdd0709f1e49474cb7d86a
+    entity_id: binary_sensor.4_in_1_sensor_home_security_motion_detection
+    domain: binary_sensor
+    for:
+      hours: 0
+      minutes: 0
+      seconds: 1
+      milliseconds: 0
+  condition:
+  - condition: sun
+    after: sunset
+  action:
+  - scene: scene.caroline_s_late_night_motion
+  mode: single
+- id: '1617899442747'
+  alias: Late Night Motion Stopped In room
+  description: ''
+  trigger:
+  - type: no_motion
+    platform: device
+    device_id: 53d4f83bc5fdd0709f1e49474cb7d86a
+    entity_id: binary_sensor.4_in_1_sensor_home_security_motion_detection
+    domain: binary_sensor
+    for:
+      hours: 0
+      minutes: 1
+      seconds: 0
+      milliseconds: 0
+  condition: []
+  action:
+  - scene: scene.caroline_dark_room
+  mode: single
+- id: '1617900972692'
+  alias: Daytime In Caroline's Room
+  description: ''
+  trigger:
+  - type: motion
+    platform: device
+    device_id: 53d4f83bc5fdd0709f1e49474cb7d86a
+    entity_id: binary_sensor.4_in_1_sensor_home_security_motion_detection
+    domain: binary_sensor
+  condition:
+  - condition: sun
+    before: sunset
+    after: sunrise
+  action:
+  - scene: scene.carolines_room_daytime
+  mode: single
+- id: '1617928650822'
+  alias: Early Morning Motion in Caroline's Room
+  description: ''
+  trigger:
+  - type: motion
+    platform: device
+    device_id: 53d4f83bc5fdd0709f1e49474cb7d86a
+    entity_id: binary_sensor.4_in_1_sensor_home_security_motion_detection
+    domain: binary_sensor
+    for:
+      hours: 0
+      minutes: 0
+      seconds: 1
+      milliseconds: 0
+  condition:
+  - condition: sun
+    before: sunrise
+  action:
+  - scene: scene.caroline_s_late_night_motion
+  mode: single
+- id: '1618422074174'
+  alias: Bedtime
+  description: ''
+  trigger:
+  - platform: time
+    at: '23:00'
+  condition: []
+  action:
+  - scene: scene.bedtime
+  mode: single
