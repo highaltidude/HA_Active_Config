@@ -81,7 +81,7 @@
   - scene: scene.caroline_s_late_night_motion
   mode: single
 - id: '1617899442747'
-  alias: Late Night Motion Stopped In room
+  alias: Motion Stopped In Caroline's room
   description: ''
   trigger:
   - type: no_motion
@@ -111,6 +111,7 @@
   - condition: sun
     before: sunset
     after: sunrise
+    before_offset: 00:20:00
   action:
   - scene: scene.carolines_room_daytime
   mode: single
@@ -143,4 +144,71 @@
   condition: []
   action:
   - scene: scene.bedtime
+  mode: single
+- id: '1618599001458'
+  alias: New Automation
+  description: ''
+  trigger:
+  - platform: event
+    event_type: ''
+  condition: []
+  action:
+  - service: tts.cloud_say
+    data:
+      entity_id: media_player.den
+      message: 'welcome home drew, you are the best! i love you! will you marry me? '
+  mode: single
+- id: '1621456103626'
+  alias: Low Temp Trigger
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: sensor.t6_pro_z_wave_programmable_thermostat_air_temperature
+    from: '69'
+    to: '68'
+    for: 00:01:00
+  condition: []
+  action:
+  - device_id: a77ad9a8b22cda280b49d225dbf5a937
+    domain: climate
+    entity_id: climate.t6_pro_z_wave_programmable_thermostat
+    type: set_hvac_mode
+    hvac_mode: heat
+  - service: zwave_js.set_value
+    target:
+      entity_id: climate.t6_pro_z_wave_programmable_thermostat
+    data:
+      command_class: '67'
+      property: setpoint
+      value: 69
+      property_key: '1'
+  mode: single
+- id: '1621457487594'
+  alias: High Temp Trigger
+  description: ''
+  trigger:
+  - platform: numeric_state
+    entity_id: climate.t6_pro_z_wave_programmable_thermostat
+    attribute: current_temperature
+    above: '73'
+    for: 00:00:05
+  condition: []
+  action:
+  - device_id: a77ad9a8b22cda280b49d225dbf5a937
+    domain: climate
+    entity_id: climate.t6_pro_z_wave_programmable_thermostat
+    type: set_hvac_mode
+    hvac_mode: cool
+  - service: zwave_js.set_value
+    target:
+      entity_id: climate.t6_pro_z_wave_programmable_thermostat
+    data:
+      command_class: '67'
+      property: setpoint
+      property_key: '2'
+      value: 73
+  - service: notify.mobile_app_drew_s_phone
+    data:
+      message: AC is now on and set to 73
+      title: Thermostat
   mode: single
