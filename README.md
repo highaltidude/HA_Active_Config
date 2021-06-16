@@ -8,4 +8,6 @@ Roku<br/>
 Sonos<br/>
 Speedtest<br/>
 Waze Travel Time<br/>
+Frigate<br/>
+HACS<br/>
 Z-Wave JS<br/>

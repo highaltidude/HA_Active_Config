@@ -108,10 +108,9 @@
     entity_id: binary_sensor.4_in_1_sensor_home_security_motion_detection
     domain: binary_sensor
   condition:
-  - condition: sun
-    before: sunset
-    after: sunrise
-    before_offset: 00:20:00
+  - condition: time
+    after: 08:00
+    before: '19:20'
   action:
   - scene: scene.carolines_room_daytime
   mode: single
@@ -144,19 +143,6 @@
   condition: []
   action:
   - scene: scene.bedtime
-  mode: single
-- id: '1618599001458'
-  alias: New Automation
-  description: ''
-  trigger:
-  - platform: event
-    event_type: ''
-  condition: []
-  action:
-  - service: tts.cloud_say
-    data:
-      entity_id: media_player.den
-      message: 'welcome home drew, you are the best! i love you! will you marry me? '
   mode: single
 - id: '1621456103626'
   alias: Low Temp Trigger

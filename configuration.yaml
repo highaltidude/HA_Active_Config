@@ -11,26 +11,6 @@ automation: !include automations.yaml
 script: !include scripts.yaml
 scene: !include scenes.yaml
 
-# Sabnzbd
-sabnzbd:
-  api_key: 3ff07e22c351cad43c9670b97cb97078
-  host: 192.168.0.41
-  path: /sabnzbd
-  name: sab
-  port: 8080
-  sensors:
-    - current_status
-    - speed
-    - queue_size
-    - queue_remaining
-    - disk_size
-    - disk_free
-    - queue_count
-    - day_size
-    - week_size
-    - month_size
-    - total_size
-    
 # Google Calendar
 google:
   client_id: 787355086980-atrb58f8fueii481t5npts9uj5n8blan.apps.googleusercontent.com
